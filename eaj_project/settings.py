@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Local
     'employees.apps.EmployeesConfig',
     'pages.apps.PagesConfig',
+    'articles.apps.JournalsConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+TIME_ZONE = 'Europe/Copenhagen'
