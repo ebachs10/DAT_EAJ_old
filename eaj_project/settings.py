@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # Local
     'employees.apps.EmployeesConfig',
     'pages.apps.PagesConfig',
-    'articles.apps.JournalsConfig',
+    'journals.apps.JournalsConfig',
 ]
 
 MIDDLEWARE = [

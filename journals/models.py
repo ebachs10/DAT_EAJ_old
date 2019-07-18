@@ -4,9 +4,9 @@ from django.db import models
 from django.urls import reverse
 
 ANIMAL_TYPES = (
-    ('sow','SOW'),
-    ('cow', 'COW'),
-    ('sheep','SHEEP'),
+    ('sow','Sow'),
+    ('cow', 'Cow'),
+    ('sheep','Sheep'),
 )
 
 DISEASE_TYPES = (
@@ -17,9 +17,9 @@ DISEASE_TYPES = (
 
 
 class Journal(models.Model):
-    AnimalType = models.CharField(max_length=3, choices = ANIMAL_TYPES , default = 'sow')
+    AnimalType = models.CharField(max_length=255, choices = ANIMAL_TYPES , default = 'sow')
     TagNumber = models.CharField(max_length=255)
-    disease = models.CharField(max_length=2, choices = DISEASE_TYPES , default = 'diarrhea')
+    disease = models.CharField(max_length=255, choices = DISEASE_TYPES , default = 'diarrhea')
     note = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE)
