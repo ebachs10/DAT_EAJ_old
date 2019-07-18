@@ -7,10 +7,10 @@ class EmployeeCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = Employee
-        fields = UserCreationForm.Meta.fields + ('age',)
+        fields = ('username' , 'email' , 'age',)
 
 class EmployeeChangeForm(UserChangeForm):
 
     class Meta:
         model = Employee
-        fields = UserChangeForm.Meta.fields
+        fields = ('username' , 'email' , 'age',)
