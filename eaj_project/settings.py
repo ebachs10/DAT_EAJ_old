@@ -126,11 +126,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'employees.employee' # new
+AUTH_USER_MODEL = 'employees.employee'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
