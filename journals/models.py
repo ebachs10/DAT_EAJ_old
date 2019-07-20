@@ -21,9 +21,6 @@ TREATMENT_STATUS = (
     ('critical', 'Critical'),
 )
 
-
-
-
 class Journal(models.Model):
     AnimalType = models.CharField(max_length=255, choices = ANIMAL_TYPES , default = 'sow')
     TagNumber = models.CharField(max_length=255)
@@ -33,8 +30,21 @@ class Journal(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE)
     TreatmentStatus = models.CharField(max_length=255, choices = TREATMENT_STATUS , default = 'sow')
 
+
     def __str__(self):
         return self.AnimalType + ' ' + self.TagNumber
 
     def get_absolute_url(self):
         return reverse('journal_detail', args=[str(self.id)])        
+
+class Comment(models.Model):
+    journal = models.ForeignKey(Journal, on_delete = models.CASCADE)        
+    comment = models.CharField(max_length = 140)
+    author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE,)
+
+    def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse('journal_list')
+    
