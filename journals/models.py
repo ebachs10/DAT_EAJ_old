@@ -14,6 +14,14 @@ DISEASE_TYPES = (
     ('bedsore', 'BEDSORE'),
 )
 
+TREATMENT_STATUS = (
+    ('ok','Ok'),
+    ('warning', 'Warning'),
+    ('warning', 'Warning'),
+    ('critical', 'Critical'),
+)
+
+
 
 
 class Journal(models.Model):
@@ -23,9 +31,10 @@ class Journal(models.Model):
     note = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE)
+    TreatmentStatus = models.CharField(max_length=255, choices = TREATMENT_STATUS , default = 'sow')
 
     def __str__(self):
-        return self.TagNumber
+        return self.AnimalType + ' ' + self.TagNumber
 
     def get_absolute_url(self):
         return reverse('journal_detail', args=[str(self.id)])        

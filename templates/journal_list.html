@@ -15,7 +15,8 @@
         {{ journal.note }}
     </div>
     <div class="card-footer text-center text-muted">
-        <a href="#">Edit</a> | <a href="#">Delete</a>
+        <a href="{% url 'journal_edit' journal.pk %}">Edit</a> |
+        <a href="{% url 'journal_delete' journal.pk %}">Delete</a>
     </div>
 </div>
 <br />

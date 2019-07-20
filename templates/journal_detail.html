@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="journal_entry">
+    <h2> {{ object.Tagnumber }}</h2>
+    <p> by {{ object.author }} | {{ object.date }}</p>
+    <p>{{ object.note }}</p>
+</div>
+<p><a href="{% url 'journal_edit' journal.pk %}">Edit</a> |
+    <a href="{% url 'journal_delete' journal.pk %}">Delete</a></p>
+<p>Back to <a href="{% url 'journal_list' %}">All Journals</a>.</p>
+{% endblock content %}
