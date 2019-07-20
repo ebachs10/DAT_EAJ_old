@@ -29,7 +29,7 @@ class Journal(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE)
     TreatmentStatus = models.CharField(max_length=255, choices = TREATMENT_STATUS , default = 'sow')
-
+    Location = models.CharField(max_length=255 , default = 'Optional to set location')
 
     def __str__(self):
         return self.AnimalType + ' ' + self.TagNumber
@@ -38,7 +38,9 @@ class Journal(models.Model):
         return reverse('journal_detail', args=[str(self.id)])        
 
 class Comment(models.Model):
-    journal = models.ForeignKey(Journal, on_delete = models.CASCADE)        
+    journal = models.ForeignKey(Journal, 
+                                on_delete = models.CASCADE,
+                                related_name = 'comments')        
     comment = models.CharField(max_length = 140)
     author = models.ForeignKey(get_user_model(), on_delete = models.CASCADE,)
 
